@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
-// import CuriosityPhotoList from './CuriosityPhotoList/CuriosityPhotoList';
 import ChemCam from './CuriosityCameras/ChemcamContainer/ChemcamContainer';
 import {Container, Row, Col} from 'reactstrap';
 
+
+// import CuriosityPhotoList from './CuriosityPhotoList/CuriosityPhotoList';
 //<CuriosityPhotoList curiosityPhotos={this.state.curiosity} />
+
 
 class Curiosity extends Component {
     constructor() {
@@ -57,11 +59,11 @@ class Curiosity extends Component {
                 <Col md="4" id="Camera4">
                     <button onClick={this.onClick}>Camera CHEMCAM</button>
                 </Col>
-          </Row>
-          <Row>
                 <Col md="4" id="Camera5">
                     <button onClick={this.onClick}>Camera MAHLI</button>
                 </Col>
+          </Row>
+          <Row>
                 <Col md="4" id="Camera6">
                     <button onClick={this.onClick}>Camera MARDI</button>
                 </Col>

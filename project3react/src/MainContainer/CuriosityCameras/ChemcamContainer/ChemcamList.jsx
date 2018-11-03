@@ -4,7 +4,7 @@ const ChemCamList = (props) => {
     const chemCamPhotos = props.ChemCamPhotos.map((ChemCamPhoto, i) => {
         return <div id="info" key={i}>
         <h1>Chemcam Photos</h1><br/>
-        <h2>{ChemCamPhoto.photos}</h2>
+        {ChemCamPhoto.photos}
         </div>
     })
     return (
