@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import MahliList from './MahliList'
 
 class MahliCamera extends Component {
     constructor(){
@@ -10,7 +11,7 @@ class MahliCamera extends Component {
     getMahliPhotos = async () => {
         try {
         const mahliPhotos = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=355&camera=mahli&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl')
-        mahliPhotosJson = mahliPhotos.json();
+        mahliPhotosJson = await mahliPhotos.json();
         console.log(mahliPhotosJson, ' MAHLI Photos')
         return mahliPhotosJson.photos
     } catch(err) {
