@@ -20,6 +20,7 @@ class RhazCamera extends Component {
     }
     componentDidMount() {
         this.getRhazPhotos().then((rhazCam) => {
+            console.log(rhazCam, ' rhazcamphotos')
             this.setState({rhazCam: rhazCam})
         }).catch((err) => {
             console.log(err)

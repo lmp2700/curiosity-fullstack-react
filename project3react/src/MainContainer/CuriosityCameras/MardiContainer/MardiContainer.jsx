@@ -20,6 +20,7 @@ class MardiCamera extends Component {
     }
     componentDidMount () {
         this.getMardiPhotos().then((mardiPhoto) => {
+            console.log(mardiPhoto, ' mardiphotos')
             this.setState({mardi: mardiPhoto})
         }).catch((err) => {
             console.log(err)

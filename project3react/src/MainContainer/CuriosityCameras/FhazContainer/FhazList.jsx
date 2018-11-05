@@ -1,11 +1,11 @@
 import React from 'react'
 
-const fhazPhotosList = (props) => {
-    const fhazPhotos = props.fhazPhotos.map((phazPhoto, i) => {
+const FhazPhotosList = (props) => {
+    const fhazPhotos = props.fhazPhotosList.map((phazPhoto, i) => {
         return <div id="info" key={i}>
-        <h1>FHAZ Photos</h1>
-        {phazPhoto.photo}
-        </div>
+            <h1>FHAZ Photos</h1><br/>
+                <img src={phazPhoto.img_src} />
+            </div>
     })
     return (
         <div>
@@ -14,4 +14,4 @@ const fhazPhotosList = (props) => {
     )
 }
 
-export default fhazPhotosList;
+export default FhazPhotosList;

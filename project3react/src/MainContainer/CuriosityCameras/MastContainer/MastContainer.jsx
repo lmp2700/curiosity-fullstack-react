@@ -20,6 +20,7 @@ class MastCamera extends Component {
     }
     componentDidMount() {
         this.getMastPhotos().then((mastPhotos) => {
+            console.log(mastPhotos, ' mastphotos')
             this.setState({mast: mastPhotos})
         }).catch((err) => {
             console.log(err)

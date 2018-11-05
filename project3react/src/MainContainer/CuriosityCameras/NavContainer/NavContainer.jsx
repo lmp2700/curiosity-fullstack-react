@@ -20,6 +20,7 @@ class NavCamera extends Component {
     }
     componentDidMount() {
         this.getNavCam().then((navCam) => {
+            console.log(navCam, ' navcamphotos')
             this.setState({navCam: navCam})
         }).catch((err) => {
             console.log(err)

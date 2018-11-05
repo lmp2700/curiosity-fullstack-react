@@ -20,6 +20,7 @@ class FhazCamera extends Component {
     }
     componentDidMount() {
         this.getFhazPhotos().then((fhazPhotos) => {
+            console.log(fhazPhotos, ' fhazphotos')
             this.setState({fhaz: fhazPhotos})
         }).catch((err) => {
             console.log(err)
@@ -29,7 +30,7 @@ class FhazCamera extends Component {
         return(
             <div>
                 <h1>Photos by Curiosity's Front Hazard Avoidance Camera</h1>
-                <FhazPhotosList />
+                <FhazPhotosList fhazPhotosList={this.state.fhaz}/>
             </div>
         )
     }

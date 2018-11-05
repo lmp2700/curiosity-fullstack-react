@@ -20,6 +20,7 @@ class MahliCamera extends Component {
 }
 componentDidMount() {
     this.getMahliPhotos().then((mahlicam) => {
+        console.log(mahlicam, ' mahliphotos')
         this.setState({mahli: mahlicam})
     }).catch((err) => {
         console.log(err)
