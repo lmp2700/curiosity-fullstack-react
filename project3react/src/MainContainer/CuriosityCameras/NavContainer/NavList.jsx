@@ -1,10 +1,10 @@
 import React from 'react'
 
 const NavCamList = (props) => {
-    const NavCamPhotos = props.NavCamPhotos.map((navCam, i) => {
+    const NavCamPhotos = props.navCamPhotos.map((navCam, i) => {
         return <div id="info" key={i}>
-        <h1>Nav Cam Photos</h1><br/>
-        {navCam.photos}
+            <h1>Nav Cam Photos</h1><br/>
+                <img src={navCam.img_src}/>
         </div>
     })
     return (

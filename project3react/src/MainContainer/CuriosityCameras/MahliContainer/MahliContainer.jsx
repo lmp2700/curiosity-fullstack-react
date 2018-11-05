@@ -11,7 +11,7 @@ class MahliCamera extends Component {
     getMahliPhotos = async () => {
         try {
         const mahliPhotos = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=355&camera=mahli&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl')
-        mahliPhotosJson = await mahliPhotos.json();
+        const mahliPhotosJson = await mahliPhotos.json();
         console.log(mahliPhotosJson, ' MAHLI Photos')
         return mahliPhotosJson.photos
     } catch(err) {
@@ -30,7 +30,7 @@ componentDidMount() {
     return (
         <div>
             <h1>Photos by Curiosity's Mars Hand Lens Imager</h1>
-                <MahliList />
+                <MahliList mahliPhotoList={this.state.mahli} />
         </div>
             )
     }

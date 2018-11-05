@@ -1,12 +1,10 @@
 import React from 'react'
 
-console.log('mast 1')
 const MastPhotoList = (props) => {
-    const mastPhotos = props.mastPhotos.map((mastPhoto, i) => {
-        console.log('mast 2')
+    const mastPhotos = props.mastPhotosList.map((mastPhoto, i) => {
         return <div id="info" key={i}>
-        <h1>Mast Photos</h1><br/>
-        {mastPhoto.img_src}
+            <h1>Mast Photos</h1><br/>
+                <img src={mastPhoto.img_src} />
         </div>
     })
     return (
@@ -15,5 +13,5 @@ const MastPhotoList = (props) => {
         </div>
     )
 }
-console.log('mast last')
+
 export default MastPhotoList;

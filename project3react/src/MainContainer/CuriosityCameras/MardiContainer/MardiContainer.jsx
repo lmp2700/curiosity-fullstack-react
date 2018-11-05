@@ -11,7 +11,7 @@ class MardiCamera extends Component {
     getMardiPhotos = async () => {
         try {
             const mardiPhotos = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=355&camera=mardi&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl')
-            mardiPhotosJson = await mardiPhotos.json();
+            const mardiPhotosJson = await mardiPhotos.json();
             console.log(mardiPhotosJson)
             return mardiPhotosJson.photos
         } catch(err) {
@@ -30,7 +30,7 @@ class MardiCamera extends Component {
     return(
             <div>
                 <h1>Photos by Curiosity's Mars Descent Imager</h1>
-                <MardiPhotoList />
+                <MardiPhotoList mardiPhotosList={this.state.mardi}/>
             </div>
         )
     }

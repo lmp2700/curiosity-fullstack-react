@@ -1,14 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import ChemCam from './CuriosityCameras/ChemcamContainer/ChemcamContainer';
-import MastCamera from './CuriosityCameras/MastContainer/MastContainer'
-import FhazCamera from './CuriosityCameras/FhazContainer/FhazContainer'
+import MastCamera from './CuriosityCameras/MastContainer/MastContainer';
+import FhazCamera from './CuriosityCameras/FhazContainer/FhazContainer';
+import RhazCamera from './CuriosityCameras/RhazContainer/RhazContainer';
+import MahliCamera from './CuriosityCameras/MahliContainer/MahliContainer'; // no photos, erroring out
+import MardiCamera from './CuriosityCameras/MardiContainer/MardiContainer'; // no photos, erroring out
+import NavCam from './CuriosityCameras/NavContainer/NavContainer'
 import {Container, Row, Col} from 'reactstrap';
 import Modal from 'react-responsive-modal';
 
-
 // import CuriosityPhotoList from './CuriosityPhotoList/CuriosityPhotoList';
 //<CuriosityPhotoList curiosityPhotos={this.state.curiosity} />
-
 
 class Curiosity extends Component {
     constructor() {
@@ -45,12 +47,12 @@ class Curiosity extends Component {
     onCloseModal = () => {
         this.setState({ open: false });
       };
-    onClick = (e) => { // test to see if button works
+    onClick = (e) => { // keep for Mahli & Mardi (no photos)
         e.preventDefault();
         console.log('clicked')
     }
     render () {
-        const { open } = this.state;
+        const {open} = this.state;
         return (
             <Container>
             <Row>
@@ -68,12 +70,18 @@ class Curiosity extends Component {
                 </Col>
                 <br/>
                 <Col md="4" id="Camera2">
-                    <button onClick={this.onClick}>Camera RHAZ</button>
+                    <button onClick={this.onOpenModal}>Camera RHAZ</button>
+                        <Modal open={open} onClose={this.onCloseModal} center>
+                            <RhazCamera rhazcamera={this.state.rhaz} />
+                        </Modal>
                 </Col>
           </Row>
           <Row>
                 <Col md="4" id="Camera3">
-                <button onClick={this.onClick}>Camera MAST</button>
+                <button onClick={this.onOpenModal}>Camera MAST</button>
+                    <Modal open={open} onClose={this.onCloseModal} center>
+                        <MastCamera mastcam={this.state.mast}/>
+                    </Modal>
                 </Col>
                 <br/>
                 <Col md="4" id="Camera4">
@@ -93,7 +101,10 @@ class Curiosity extends Component {
                 </Col>
                 <br/>
                 <Col md="4" id="Camera7">
-                    <button onClick={this.onClick}>Camera NAVCAM</button>
+                    <button onClick={this.onOpenModal}>Camera NAVCAM</button>
+                        <Modal open={open} onClose={this.onCloseModal} center>
+                            <NavCam navcam={this.state.nav} />
+                        </Modal>
                 </Col>
           </Row>
         </Container>

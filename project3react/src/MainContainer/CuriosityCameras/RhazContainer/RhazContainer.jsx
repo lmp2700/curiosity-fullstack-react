@@ -11,7 +11,7 @@ class RhazCamera extends Component {
     getRhazPhotos = async () => {
         try {
             const rhazCamPhotos = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=355&camera=rhaz&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl')
-            rhazCamPhotosJson = await rhazCamPhotos.json();
+            const rhazCamPhotosJson = await rhazCamPhotos.json();
             console.log(rhazCamPhotosJson)
             return rhazCamPhotosJson.photos
         } catch(err) {
@@ -30,7 +30,7 @@ class RhazCamera extends Component {
         return (
             <div>
                 <h1>Photos by Curiosity's Rear Hazard Avoidance Camera</h1>
-                <RhazCamList />
+                <RhazCamList rhazCamList={this.state.rhazCam}/>
             </div>
         )
     }
