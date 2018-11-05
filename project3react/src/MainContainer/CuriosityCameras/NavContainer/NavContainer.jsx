@@ -11,7 +11,7 @@ class NavCamera extends Component {
     getNavCam = async () => {
         try{
             const navCam = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=355&camera=navcam&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl')
-            navCamJson = navCam.json;
+            navCamJson = await navCam.json;
             console.log(navCamJson)
             return navCamJson
         } catch(err) {
