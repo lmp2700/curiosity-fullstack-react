@@ -1,18 +1,20 @@
 import React, {Component} from 'react'
 import NavCamList from './NavList'
+import Modal from 'react-responsive-modal';
 
 class NavCamera extends Component {
     constructor(){
         super();
             this.state = {
-                navCam: []
+                navCam: [],
+                open: false
             }
     }
     getNavCam = async () => {
         try{
             const navCam = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=355&camera=navcam&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl')
             const navCamJson = await navCam.json();
-            console.log(navCamJson)
+            // console.log(navCamJson)
             return navCamJson.photos
         } catch(err) {
             return(err)
@@ -20,17 +22,26 @@ class NavCamera extends Component {
     }
     componentDidMount() {
         this.getNavCam().then((navCam) => {
-            console.log(navCam, ' navCamphotos')
+            // console.log(navCam, ' navCamphotos')
             this.setState({navCam: navCam})
         }).catch((err) => {
             console.log(err)
         })
     }
+    onOpenModal = () => {
+        this.setState({ open: true });
+      }; 
+    onCloseModal = () => {
+        this.setState({ open: false });
+      };
     render(){
         return (
             <div>
-                <h1>Photos by Curiosity's Navigation Camera</h1>
-                <NavCamList navCamPhotos={this.state.navCam}/>
+                <button onClick={this.onOpenModal}>Camera NAVCAM</button>
+                    <Modal open={this.state.open} onClose={this.onCloseModal} center>
+                        <h1>Photos by Curiosity's Navigation Camera</h1>
+                            <NavCamList navCamPhotos={this.state.navCam}/>
+                    </Modal>
             </div>
         )
     }

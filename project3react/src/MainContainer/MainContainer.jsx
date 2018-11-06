@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Button} from 'react';
 import ChemCam from './CuriosityCameras/ChemcamContainer/ChemcamContainer';
 import MastCamera from './CuriosityCameras/MastContainer/MastContainer';
 import FhazCamera from './CuriosityCameras/FhazContainer/FhazContainer';
@@ -47,10 +47,6 @@ class Curiosity extends Component {
     onCloseModal = () => {
         this.setState({ open: false });
       };
-    onClick = (e) => { // keep for Mahli & Mardi (no photos)
-        e.preventDefault();
-        console.log('clicked')
-    }
     render () {
         const {open} = this.state;
         return (
@@ -63,48 +59,33 @@ class Curiosity extends Component {
             </Row>
             <Row>
                 <Col md="4" id="Camera1">
-                    <button onClick={this.onOpenModal}>Camera FHAZ</button>
-                        <Modal open={open} onClose={this.onCloseModal} center>
-                            <FhazCamera fhazcam={this.state.fhaz} />
-                        </Modal>
+                    <FhazCamera fhazcam={this.state.fhaz} />  
                 </Col>
                 <br/>
                 <Col md="4" id="Camera2">
-                    <button onClick={this.onOpenModal}>Camera RHAZ</button>
-                        <Modal open={open} onClose={this.onCloseModal} center>
-                            <RhazCamera rhazcamera={this.state.rhaz} />
-                        </Modal>
+                    <RhazCamera rhazcamera={this.state.rhaz} />
                 </Col>
           </Row>
           <Row>
                 <Col md="4" id="Camera3">
-                <button onClick={this.onOpenModal}>Camera MAST</button>
-                    <Modal open={open} onClose={this.onCloseModal} center>
-                        <MastCamera mastcam={this.state.mast}/>
-                    </Modal>
+                    <MastCamera mastcam={this.state.mast}/>
                 </Col>
                 <br/>
                 <Col md="4" id="Camera4">
-                    <button onClick={this.onOpenModal}>Camera CHEMCAM</button>
-                        <Modal open={open} onClose={this.onCloseModal} center>
-                            <ChemCam chemcam={this.state.chemcam}/>
-                        </Modal>
+                    <ChemCam chemcam={this.state.chemcam}/>
                 </Col>
                 <br/>
                 <Col md="4" id="Camera5">
-                    <button onClick={this.onClick}>Camera MAHLI</button>
+                    <MahliCamera mahlicam={this.state.mahli} />
                 </Col>
           </Row>
           <Row>
                 <Col md="4" id="Camera6">
-                    <button onClick={this.onClick}>Camera MARDI</button>
+                    <MardiCamera mardicam={this.state.mardi} />
                 </Col>
                 <br/>
                 <Col md="4" id="Camera7">
-                    <button onClick={this.onOpenModal}>Camera NAVCAM</button>
-                        <Modal open={open} onClose={this.onCloseModal} center>
-                            <NavCam navcam={this.state.nav} />
-                        </Modal>
+                    <NavCam navcam={this.state.nav} />
                 </Col>
           </Row>
         </Container>
