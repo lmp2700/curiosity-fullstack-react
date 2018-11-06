@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Container, Button} from 'reactstrap';
+import {Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 class Comment extends Component {
     constructor(){
@@ -12,18 +12,19 @@ class Comment extends Component {
                 comments: ''
             }
     }
-    onEnterUsername(e) {
+    onEnterUsername = (e) => {
         this.setState({
             [e.currentTarget.name]: e.currentTarget.value
         })
     }
-    onMakeComment(e) {
+    onMakeComment = (e) => {
         this.setState({
             [e.currentTarget.name]: e.currentTarget.value
         })
     }
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
+        console.log('comment click')
         this.setState({
             name: '',
             comments: ''
@@ -32,15 +33,19 @@ class Comment extends Component {
 render() {
     return (
             <Container>
-                <div>
-                <form onSubmit={this.onSubmit}>
-                    <label>Name: </label>
-                        <input type="text" value="name" onChange={this.onEnterUsername}/>
-                    <label>Comments: </label>
-                        <input type="text" value="comments" onChange={this.onMakeComment} />
-                    <button type="submit" value="Submit">Submit</button>
-                </form>
-                </div>
+                <Form onSubmit={this.onSubmit}>
+                    <div>
+                        <FormGroup>
+                            <Label>Name: </Label>
+                                <Input type="text" placeholder="name" onChange={this.onEnterUsername}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>Comments: </Label>
+                                <Input type="textarea" placeholder="comments" onChange={this.onMakeComment} />
+                        </FormGroup>
+                            <Button outline color="info" type="submit" value="Submit">Submit</Button>
+                    </div>
+                </Form>
             </Container>
         )
     }

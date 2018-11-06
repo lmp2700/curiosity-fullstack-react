@@ -1,13 +1,12 @@
-import React, {Component, Button} from 'react';
+import React, {Component} from 'react';
 import ChemCam from './CuriosityCameras/ChemcamContainer/ChemcamContainer';
 import MastCamera from './CuriosityCameras/MastContainer/MastContainer';
 import FhazCamera from './CuriosityCameras/FhazContainer/FhazContainer';
 import RhazCamera from './CuriosityCameras/RhazContainer/RhazContainer';
-import MahliCamera from './CuriosityCameras/MahliContainer/MahliContainer'; // no photos, erroring out
-import MardiCamera from './CuriosityCameras/MardiContainer/MardiContainer'; // no photos, erroring out
+import MahliCamera from './CuriosityCameras/MahliContainer/MahliContainer';
+import MardiCamera from './CuriosityCameras/MardiContainer/MardiContainer';
 import NavCam from './CuriosityCameras/NavContainer/NavContainer'
-import {Container, Row, Col} from 'reactstrap';
-import Modal from 'react-responsive-modal';
+import {Container, Row, Col, Button} from 'reactstrap';
 
 // import CuriosityPhotoList from './CuriosityPhotoList/CuriosityPhotoList';
 //<CuriosityPhotoList curiosityPhotos={this.state.curiosity} />
@@ -51,42 +50,32 @@ class Curiosity extends Component {
         const {open} = this.state;
         return (
             <Container>
-            <Row>
-                <div>
-                    <h1>Photos by Curiosity Rover on Sol 355</h1>
-                    <h2>August 5, 2013 ~ Happy Birthday, Curiosity</h2>
-                </div>
-            </Row>
-            <Row>
-                <Col md="4" id="Camera1">
-                    <FhazCamera fhazcam={this.state.fhaz} />  
-                </Col>
+                <Row>
+                    <div>
+                            <h1 className="display-3">Curiosity Rover Photos</h1>
+                                <p className="lead">Photos by Curiosity Rover on Sol 355</p>
+                                    <br/>
+                                <p>
+                                    <Button outline color="info">Login</Button>
+                                    <Button outline color="info">Create Account</Button>
+                                </p>
+                                    <hr className="my-2" />          
+                    </div>
+                </Row>
+          <Row>
+                <Col md="4" id="CameraBlank"></Col>
                 <br/>
-                <Col md="4" id="Camera2">
+                <Col md="4" id="Cameras">
+                    <FhazCamera fhazcam={this.state.fhaz} /> 
                     <RhazCamera rhazcamera={this.state.rhaz} />
-                </Col>
-          </Row>
-          <Row>
-                <Col md="4" id="Camera3">
                     <MastCamera mastcam={this.state.mast}/>
-                </Col>
-                <br/>
-                <Col md="4" id="Camera4">
                     <ChemCam chemcam={this.state.chemcam}/>
-                </Col>
-                <br/>
-                <Col md="4" id="Camera5">
                     <MahliCamera mahlicam={this.state.mahli} />
-                </Col>
-          </Row>
-          <Row>
-                <Col md="4" id="Camera6">
                     <MardiCamera mardicam={this.state.mardi} />
-                </Col>
-                <br/>
-                <Col md="4" id="Camera7">
                     <NavCam navcam={this.state.nav} />
                 </Col>
+                <br/>
+                <Col md="4" id="CameraBlank"></Col>
           </Row>
         </Container>
         )

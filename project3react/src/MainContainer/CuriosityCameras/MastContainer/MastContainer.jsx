@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import MastPhotoList from './MastList'
 import Modal from 'react-responsive-modal';
+import CommentContainer from '../CommentContainer/CommentContainer'
+import {Button} from 'reactstrap'
 
 class MastCamera extends Component {
     constructor() {
@@ -37,10 +39,11 @@ class MastCamera extends Component {
     render(){
     return (
             <div>
-                <button onClick={this.onOpenModal}>Camera MAST</button>
+                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera MAST</Button>
                     <Modal open={this.state.open} onClose={this.onCloseModal} center>
                         <h1>Photos by Curiosity's Mast Camera</h1>
                             <MastPhotoList mastPhotosList={this.state.mast}/>
+                            <CommentContainer comments={this.state.comments}/>
                     </Modal>
             </div>
         )

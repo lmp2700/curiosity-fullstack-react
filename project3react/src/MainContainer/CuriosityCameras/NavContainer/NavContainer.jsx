@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import NavCamList from './NavList'
 import Modal from 'react-responsive-modal';
+import CommentContainer from '../CommentContainer/CommentContainer'
+import {Button} from 'reactstrap'
 
 class NavCamera extends Component {
     constructor(){
@@ -37,10 +39,11 @@ class NavCamera extends Component {
     render(){
         return (
             <div>
-                <button onClick={this.onOpenModal}>Camera NAVCAM</button>
+                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera NAVCAM</Button>
                     <Modal open={this.state.open} onClose={this.onCloseModal} center>
                         <h1>Photos by Curiosity's Navigation Camera</h1>
                             <NavCamList navCamPhotos={this.state.navCam}/>
+                            <CommentContainer comments={this.state.comments}/>
                     </Modal>
             </div>
         )

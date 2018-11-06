@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import MardiPhotoList from './MardiList'
 import Modal from 'react-responsive-modal';
+import CommentContainer from '../CommentContainer/CommentContainer'
+import {Button} from 'reactstrap'
 
 class MardiCamera extends Component {
     constructor() {
@@ -37,10 +39,11 @@ class MardiCamera extends Component {
     render() {
     return(
             <div>
-                <button onClick={this.onOpenModal}>Camera MARDI</button>
+                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera MARDI</Button>
                     <Modal open={this.state.open} onClose={this.onCloseModal} center>
                         <h1>Photos by Curiosity's Mars Descent Imager</h1>
                             <MardiPhotoList mardiPhotosList={this.state.mardi}/>
+                            <CommentContainer comments={this.state.comments}/>
                 </Modal>
             </div>
         )

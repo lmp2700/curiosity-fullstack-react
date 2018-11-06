@@ -16,7 +16,7 @@ class ChemCamList extends Component {
         // console.log(ChemCamPhoto)
         return  <div className="info" key={i}>
                     <h1>Chemcam Photos</h1><br/>
-                        <img width={500} height={450} src={ChemCamPhoto.img_src} />
+                        <img width={500} height={450} src={ChemCamPhoto.img_src} alt={ChemCamPhoto.earth_date} />
             </div>
     })
     return (

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import RhazCamList from './RhazList'
 import Modal from 'react-responsive-modal';
+import CommentContainer from '../CommentContainer/CommentContainer'
+import {Button} from 'reactstrap'
 
 class RhazCamera extends Component {
     constructor() {
@@ -37,10 +39,11 @@ class RhazCamera extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.onOpenModal}>Camera RHAZ</button>
+                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera RHAZ</Button>
                     <Modal open={this.state.open} onClose={this.onCloseModal} center>
                         <h1>Photos by Curiosity's Rear Hazard Avoidance Camera</h1>
                             <RhazCamList rhazCamList={this.state.rhazCam}/>
+                            <CommentContainer comments={this.state.comments}/>
                     </Modal>
             </div>
         )

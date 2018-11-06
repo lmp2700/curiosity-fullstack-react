@@ -1,8 +1,8 @@
-import React, {Component, Button} from 'react'
+import React, {Component} from 'react'
 import ChemCamList from "./ChemcamList"
 import Modal from 'react-responsive-modal';
 import CommentContainer from '../CommentContainer/CommentContainer'
-
+import {Button} from 'reactstrap'
 
 class ChemCam extends Component {
     constructor() {
@@ -39,7 +39,7 @@ onCloseModal = () => {
     render() {
         return(
            <div>
-                <button onClick={this.onOpenModal}>Camera CHEMCAM</button>
+                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera CHEMCAM</Button>
                     <Modal open={this.state.open} onClose={this.onCloseModal} center>
                         <h1>Photos by Curiosity's Chemistry and Camera Complex</h1>
                             <ChemCamList chemCamList={this.state.chemcam} />

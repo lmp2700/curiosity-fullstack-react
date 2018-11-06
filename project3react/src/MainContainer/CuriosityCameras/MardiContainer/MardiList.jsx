@@ -4,7 +4,7 @@ const MardiPhotoList = (props) => {
     const mardiPhotos = props.mardiPhotosList.map((mardiPhoto, i) => {
         return <div id="info" key={i}>
             <h1>Mardi Photos Photos</h1><br/>
-                <img width={500} height={450} src={mardiPhoto.img_src} />
+                <img width={500} height={450} src={mardiPhoto.img_src} alt={mardiPhoto.earth_date}/>
         </div>
     })
     return (

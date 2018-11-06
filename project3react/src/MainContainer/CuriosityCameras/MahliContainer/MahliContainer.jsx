@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import MahliList from './MahliList'
 import Modal from 'react-responsive-modal';
+import CommentContainer from '../CommentContainer/CommentContainer'
+import {Button} from 'reactstrap'
 
 class MahliCamera extends Component {
     constructor(){
@@ -37,10 +39,11 @@ onCloseModal = () => {
     render() {
     return (
         <div>
-            <button onClick={this.onOpenModal}>Camera MAHLI</button>
+            <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera MAHLI</Button>
                 <Modal open={this.state.open} onClose={this.onCloseModal} center>
                     <h1>Photos by Curiosity's Mars Hand Lens Imager</h1>
                     <MahliList mahliPhotoList={this.state.mahli} />
+                    <CommentContainer comments={this.state.comments}/>
                 </Modal>
         </div>
             )
