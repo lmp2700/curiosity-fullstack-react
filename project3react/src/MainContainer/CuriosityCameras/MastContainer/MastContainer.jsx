@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import MastPhotoList from './MastList'
-import Modal from 'react-responsive-modal';
 import CommentContainer from '../CommentContainer/CommentContainer'
-import {Button} from 'reactstrap'
+import {Button, Modal, ModalBody, ModalFooter} from 'reactstrap'
 
 class MastCamera extends Component {
     constructor() {
         super();
         this.state = {
             mast: [],
-            open: false
+            modal: false
         }
+        this.toggle = this.toggle.bind(this);
     }
     getMastPhotos = async () => {
         try {
@@ -30,6 +30,11 @@ class MastCamera extends Component {
             console.log(err)
         })
     }
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
     onOpenModal = () => {
         this.setState({ open: true });
       }; 
@@ -39,11 +44,16 @@ class MastCamera extends Component {
     render(){
     return (
             <div>
-                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera MAST</Button>
-                    <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                        <h1>Photos by Curiosity's Mast Camera</h1>
-                            <MastPhotoList mastPhotosList={this.state.mast}/>
+                <Button outline color="info" size="lg" onClick={this.toggle} block>Camera MAST</Button>
+                    <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
+                        <ModalBody>
+                            <h1>Photos by Mast Camera</h1>
+                                <MastPhotoList mastPhotosList={this.state.mast}/>
+                        </ModalBody>
+                        <ModalFooter>
                             <CommentContainer comments={this.state.comments}/>
+                        </ModalFooter>
+                            <Button color="info" onClick={this.toggle}>Close</Button>
                     </Modal>
             </div>
         )

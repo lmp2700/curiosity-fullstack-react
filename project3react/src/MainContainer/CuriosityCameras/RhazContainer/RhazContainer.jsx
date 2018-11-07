@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import RhazCamList from './RhazList'
-import Modal from 'react-responsive-modal';
 import CommentContainer from '../CommentContainer/CommentContainer'
-import {Button} from 'reactstrap'
+import {Button, Modal, ModalBody, ModalFooter} from 'reactstrap'
 
 class RhazCamera extends Component {
     constructor() {
         super();
             this.state = {
                 rhazCam: [],
-                open: false
+                modal: false
             }
+            this.toggle = this.toggle.bind(this);
     }
     getRhazPhotos = async () => {
         try {
@@ -30,6 +30,11 @@ class RhazCamera extends Component {
             console.log(err)
         })
     }
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
     onOpenModal = () => {
         this.setState({ open: true });
       }; 
@@ -39,11 +44,17 @@ class RhazCamera extends Component {
     render() {
         return (
             <div>
-                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera RHAZ</Button>
-                    <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                        <h1>Photos by Curiosity's Rear Hazard Avoidance Camera</h1>
-                            <RhazCamList rhazCamList={this.state.rhazCam}/>
+                <Button outline color="info" size="lg" onClick={this.toggle} block>Camera RHAZ</Button>
+                    <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
+                        <ModalBody>
+                            <h1>Photos by Rear Hazard Avoidance Camera</h1>
+                                <RhazCamList rhazCamList={this.state.rhazCam}/>
+                        </ModalBody>
+                        <ModalFooter>
                             <CommentContainer comments={this.state.comments}/>
+                            <br/>
+                        </ModalFooter>
+                            <Button color="info" onClick={this.toggle}>Close</Button>     
                     </Modal>
             </div>
         )

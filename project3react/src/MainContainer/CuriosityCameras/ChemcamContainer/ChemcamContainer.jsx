@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import ChemCamList from "./ChemcamList"
-import Modal from 'react-responsive-modal';
 import CommentContainer from '../CommentContainer/CommentContainer'
-import {Button} from 'reactstrap'
+import {Button, Modal, ModalBody, ModalFooter} from 'reactstrap'
 
 class ChemCam extends Component {
     constructor() {
         super();
         this.state = {
             chemcam: [],
-            open: false
+            modal: false
         }
+        this.toggle = this.toggle.bind(this);
     }
 getChemPhotos = async () => {
     try {
@@ -30,6 +30,11 @@ componentDidMount() {
         console.log(err)
     });
 }
+toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
 onOpenModal = () => {
     this.setState({ open: true });
   }; 
@@ -39,15 +44,22 @@ onCloseModal = () => {
     render() {
         return(
            <div>
-                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera CHEMCAM</Button>
-                    <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                        <h1>Photos by Curiosity's Chemistry and Camera Complex</h1>
+                <Button outline color="info" size="lg" onClick={this.toggle} block>Camera CHEMCAM</Button>
+                    <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
+                        <ModalBody>
+                            <h1>Photos by Chemistry and Camera Complex</h1>
                             <ChemCamList chemCamList={this.state.chemcam} />
+                        </ModalBody>
+                        <ModalFooter>
                             <CommentContainer comments={this.state.comments}/>
+                            <br/>
+                        </ModalFooter>
+                        <Button color="info" onClick={this.toggle}>Close</Button>
                     </Modal>
             </div>
         )
     }
 }
+
 
 export default ChemCam;

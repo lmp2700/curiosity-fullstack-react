@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import MahliList from './MahliList'
-import Modal from 'react-responsive-modal';
 import CommentContainer from '../CommentContainer/CommentContainer'
-import {Button} from 'reactstrap'
+import {Button, Modal, ModalBody, ModalFooter} from 'reactstrap'
 
 class MahliCamera extends Component {
     constructor(){
         super();
         this.state = {
             mahli: [],
-            open: false
+            modal: false
         }
+        this.toggle = this.toggle.bind(this);
     }
     getMahliPhotos = async () => {
         try {
@@ -30,6 +30,11 @@ componentDidMount() {
         console.log(err)
     })
 }
+toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
 onOpenModal = () => {
     this.setState({ open: true });
   }; 
@@ -39,11 +44,17 @@ onCloseModal = () => {
     render() {
     return (
         <div>
-            <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera MAHLI</Button>
-                <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                    <h1>Photos by Curiosity's Mars Hand Lens Imager</h1>
-                    <MahliList mahliPhotoList={this.state.mahli} />
-                    <CommentContainer comments={this.state.comments}/>
+            <Button outline color="info" size="lg" onClick={this.toggle} block>Camera MAHLI</Button>
+                <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
+                    <ModalBody>
+                        <h1>Photos by Mars Hand Lens Imager</h1>
+                        <MahliList mahliPhotoList={this.state.mahli} />
+                    </ModalBody>
+                    <ModalFooter>
+                        <CommentContainer comments={this.state.comments}/>
+                        <br/>
+                    </ModalFooter>
+                    <Button color="info" onClick={this.toggle}>Close</Button>
                 </Modal>
         </div>
             )

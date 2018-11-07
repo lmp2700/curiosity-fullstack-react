@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import FhazPhotosList from './FhazList'
-import Modal from 'react-responsive-modal';
 import CommentContainer from '../CommentContainer/CommentContainer'
-import {Button} from 'reactstrap'
+import {Button, Modal, ModalBody, ModalFooter} from 'reactstrap'
 
 class FhazCamera extends Component {
     constructor() {
         super();
         this.state = {
             fhaz: [],
-            open: false
+            modal: false
         }
+        this.toggle = this.toggle.bind(this);
     }
     getFhazPhotos = async () => {
         try {
@@ -30,6 +30,11 @@ class FhazCamera extends Component {
             console.log(err)
         })
     }
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
     onOpenModal = () => {
         this.setState({ open: true });
       }; 
@@ -39,11 +44,16 @@ class FhazCamera extends Component {
     render() {
         return(
             <div>
-                <Button outline color="info" size="lg" onClick={this.onOpenModal} block>Camera FHAZ</Button>
-                    <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                            <h1>Photos by Curiosity's Front Hazard Avoidance Camera</h1>
+                <Button outline color="info" size="lg" onClick={this.toggle} block>Camera FHAZ</Button>
+                    <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
+                        <ModalBody>
+                            <h1>Photos by Front Hazard Avoidance Camera</h1>
                                 <FhazPhotosList fhazPhotosList={this.state.fhaz}/>
+                        </ModalBody>
+                            <ModalFooter>
                                 <CommentContainer comments={this.state.comments}/>
+                            </ModalFooter>
+                        <Button color="info" onClick={this.toggle}>Close</Button>
                     </Modal>
             </div>
         )

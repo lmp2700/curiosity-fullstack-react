@@ -56,7 +56,7 @@ class Curiosity extends Component {
                                 <p className="lead">Photos by Curiosity Rover on Sol 355</p>
                                     <br/>
                                 <p>
-                                    <Button outline color="info">Login</Button>
+                                    <Button outline color="info">Login</Button> 
                                     <Button outline color="info">Create Account</Button>
                                 </p>
                                     <hr className="my-2" />          
