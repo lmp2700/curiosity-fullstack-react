@@ -1,5 +1,5 @@
 const express = require('express');
-const Router = express.Router();
+const router = express.Router();
 const Comments = require('../models/commentmodel');
 
 // get “/comment” => “controller#index” 
@@ -8,9 +8,13 @@ router.get('/', async(res, req) => {
     try {
         const allComments = await Comments.find();
         console.log(allComments)
-            res.render('/comments/index.ejs', {
-                comments: allComments
-        })
+        res.json({
+            status: 200,
+            comment: allComments
+          });
+            // res.render('/comments/index.ejs', {
+            //     comments: allComments
+        // })
     } catch (err) {
         res.send(err)
     }
@@ -21,9 +25,13 @@ router.get('/', async(res, req) => {
 router.get('/new', async(req, res) => {
     try {
         const newComments = await Comments.find();
-            res.render('/comments/new.ejs', {
-                comments: newComments
-            })
+        res.json({
+            status: 200,
+            comment: newComments
+          });
+            // res.render('/comments/new.ejs', {
+            //     comments: newComments
+            // })
     } catch(err) {
         res.send(err)
     }
@@ -33,9 +41,15 @@ router.get('/new', async(req, res) => {
 // # Creates new instance from new form
 router.post('/', async(req, res) => {
     try {
-        const newComment = await Comment.create(req.body)
-        res.redirect('/comments')
+        console.log(req.body, ' this is req.body');
+        const newComment = await Comments.create(req.body)
+        console.log('Hello?')
+        res.json({
+            status: 200,
+            comment: newComment
+          });
     } catch(err) {
+        console.log(err);
         res.send(err)
     }
 })
@@ -45,7 +59,11 @@ router.post('/', async(req, res) => {
 router.get('/:id', async(req, res) => {
     try {
         const showComments = await Comments.findOne(req.params.id, req.body)
-        res.redirect('/comments')
+        res.json({
+            status: 200,
+            comment: showComments
+          });
+        // res.redirect('/comments')
     } catch(err) {
         res.send(err)
     }
@@ -56,8 +74,12 @@ router.get('/:id', async(req, res) => {
 // # Shows form to edit specific instance
 router.get('/:id/edit', async(req, res) => {
     try {
-        const editComment = await Comments.findOne(req.params.id, req.body)
-        res.redirect('/comments')
+        const editComment = await Comments.findOne(req.params.id, req.body, {new: true})
+        res.json({
+            status: 200,
+            comment: editComment
+          });
+        // res.redirect('/comments')
     } catch(err) {
         res.send(err)
     }
@@ -68,7 +90,11 @@ router.get('/:id/edit', async(req, res) => {
 router.put('/:id', async(req, res) => {
     try {
         const updateComment = await Comments.findOneAndUpdate(req.params.id)
-        res.redirect('/comments')
+        res.json({
+            status: 200,
+            comment: updateComment
+          });
+        // res.redirect('/comments')
     } catch(err) {
         res.send(err)
     }
@@ -78,8 +104,12 @@ router.put('/:id', async(req, res) => {
 // # Removes instance from database
 router.delete('/:id', async(req, res) => {
     try {
-        const deleteComment = await Comments.findById(req.params.id)
-        res.redirect('/comments')
+        const deleteComment = await Comments.findByIdAndRemove(req.params.id)
+        res.json({
+            status: 200,
+            comment: deleteComment
+          });
+        // res.redirect('/comments')
     } catch(err) {
         res.send(err)
     }

@@ -52,7 +52,7 @@ class Curiosity extends Component {
             <Container>
                 <Row>
                     <div>
-                            <h1 className="display-3">Curiosity Rover Photos</h1>
+                            <h1 className="display-3">Curious || Curiosity Rover Photos App </h1>
                                 <p className="lead">Photos by Curiosity Rover on Sol 355</p>
                                     <br/>
                                 <p>

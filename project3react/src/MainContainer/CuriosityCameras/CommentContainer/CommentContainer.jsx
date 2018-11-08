@@ -1,51 +1,68 @@
 import React, {Component} from 'react'
-import {Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import NewComment from './CommentNew'
+import CommentList from './CommentList'
+import 'whatwg-fetch';
+import {Container} from 'reactstrap';
 
 class Comment extends Component {
     constructor(){
-        // this.onEnterUsername = this.onEnterUsername.bind(this);
-        // this.onMakeComment = this.onMakeComment.bind(this);
-        // this.onSubmit = this.onSubmit.bind(this);
         super();
             this.state = {
-                name: '',
-                comments: ''
+                comments: [],
+                _id: '',
+                username: '',
+                comment: ''
             }
     }
-    onEnterUsername = (e) => {
+    getComments = async () => {
+            const comments = await fetch('http://localhost:9000/comments')
+            const commentsJson = await comments.json()
+            return commentsJson
+    }
+    componentDidMount() {
+        this.getComments().then((comments) => {
+            this.setState({commentData: comments})
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+    onChangeForm = (e) => {
         this.setState({
             [e.currentTarget.name]: e.currentTarget.value
         })
     }
-    onMakeComment = (e) => {
-        this.setState({
-            [e.currentTarget.name]: e.currentTarget.value
-        })
-    }
-    onSubmit = (e) => {
+    addComment = async (newComment, e) => {
         e.preventDefault();
+        console.log(newComment)
         console.log('comment click')
-        this.setState({
-            name: '',
-            comments: ''
-        })
+        try {
+            const createComment = {
+                username: this.state.username,
+                comment: this.state.comment,
+            }
+            const newComment = await fetch('http://localhost:9000/comments', {
+                method: 'POST',
+                body: JSON.stringify(createComment),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+            const parsedResponse = await createComment.json();
+            console.log(parsedResponse, ' this is response')  
+            this.setState({
+                name: '',
+                comments: ''
+            })
+        } catch(err) {
+            return(err)
+        }
     }
 render() {
+    console.log(this.state)
     return (
             <Container>
-                <Form onSubmit={this.onSubmit}>
-                    <div>
-                        <FormGroup>
-                            <Label>Name: </Label>
-                                <Input type="text" placeholder="name" onChange={this.onEnterUsername}/>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label>Comments: </Label>
-                                <Input type="textarea" placeholder="comments" onChange={this.onMakeComment} />
-                        </FormGroup>
-                            <Button outline color="info" type="submit" value="Submit">Submit</Button>
-                    </div>
-                </Form>
+                <NewComment addComment={this.addComment}/>
+                <CommentList comments={this.state.comments} />
             </Container>
         )
     }
