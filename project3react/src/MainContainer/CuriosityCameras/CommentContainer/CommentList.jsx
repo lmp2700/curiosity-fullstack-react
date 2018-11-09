@@ -6,11 +6,11 @@ const Comments = (props) => {
     const listedComment = props.comments.map((comment, i) => {
         return (
             <div key={comment._id}>
-                <h3>{comment.username}</h3>
-                <small>{comment.comment}</small>
+                <h2>{comment.username}</h2>
+                <h4>{comment.comment}</h4>
                 <br/>
-                <Button onClick={props.editComment.bind(null, comment)}>Edit</Button>
-                <Button onClick={props.deleteComment.bind(null, comment._id)}>Delete</Button>
+                <Button size="sm" onClick={props.editComment.bind(null, comment)}>Edit</Button>&nbsp;
+                <Button size="sm" onClick={props.deleteComment.bind(null, comment._id)}>Delete</Button>
             </div>
         )
     })

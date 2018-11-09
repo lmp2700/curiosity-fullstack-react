@@ -93,8 +93,9 @@ render() {
     return (
             <Container>
                 <h3>Comments:</h3>
-                <NewComment addComment={this.addComment}/>
-                <CommentList deleteComment={this.deleteComment} editComment={this.editComment} comments={this.state.comments}/>
+                <NewComment addComment={this.addComment}/><br/>
+                <hr className="my-2"/>
+                <CommentList deleteComment={this.deleteComment} editComment={this.editComment} comments={this.state.comments}/><br/>
             </Container>
         )
     }

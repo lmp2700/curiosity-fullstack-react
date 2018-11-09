@@ -13,7 +13,7 @@ body {
   background-image: url(../src/images/curiosityselfie.jpg);
 
   /* Full height */
-  height: 100%; 
+  height: 100vh; 
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -21,12 +21,24 @@ body {
   background-size: cover;
 }
 
-Button {
+.main-container.container {
+  position: absolute;
+  top: 30px;
+  left: 46px;
+  bottom: 30px;
+}
+
+div#Cameras {
+  background: rgba(0,0,0,.3);
+  padding: 10px;
+}
+
+.appbutton {
   color: white !important;
 }
 
 .modal {
-  background-color: #000000
+  background-color: rgba(0,0,0,.3);
 }
 
 .my-2 {
@@ -34,13 +46,7 @@ Button {
 }
 
 .column1 {
-  border: #FFFFFF 1px solid;
-  border-bottom-style: none;
-}
-
-.column2 {
-  border: #FFFFFF 1px solid;
-  border-top-style: none;
+  border: #FFFFFF 2px solid;
 }
 
 .App-header {

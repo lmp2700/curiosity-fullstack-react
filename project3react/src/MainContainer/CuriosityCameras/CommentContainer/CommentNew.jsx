@@ -6,9 +6,27 @@ class newComment extends Component {
         super();
         this.state = {
             username: '',
-            comment: ''
+            comment: '',
+            nestedModal: false,
+            closeAll: false
         }
+        // this.toggle = this.toggle.bind(this);
+        // this.toggleNested = this.toggleNested.bind(this);
+        // this.toggleAll = this.toggleAll.bind(this);
     }
+    toggleNested() {
+        this.setState({
+          nestedModal: !this.state.nestedModal,
+          closeAll: false
+        });
+      }
+    
+      toggleAll() {
+        this.setState({
+          nestedModal: !this.state.nestedModal,
+          closeAll: true
+        });
+      }
     onChangeForm = (e) => {
         e.preventDefault();
         this.setState({
@@ -30,7 +48,7 @@ class newComment extends Component {
                         <FormGroup>
                             <Label>Comments: <Input type="textarea" name="comment" placeholder="comments" onChange={this.onChangeForm}/></Label>
                         </FormGroup>
-                            <Button outline color="info" type="submit" value="Submit">Submit</Button>
+                            <Button outline color="info" size="lg" type="submit" value="Submit">Submit</Button>
                     </div>
                 </Form>
             </Container>

@@ -44,7 +44,7 @@ class NavCamera extends Component {
     render(){
         return (
             <div>
-                <Button outline color="info" size="lg" onClick={this.toggle} block>Camera NAVCAM</Button>
+                <Button outline color="info" className="appbutton" size="lg" onClick={this.toggle} block>Camera NAVCAM</Button>
                     <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                         <ModalBody>
                             <h1>Photos by Navigation Camera</h1>

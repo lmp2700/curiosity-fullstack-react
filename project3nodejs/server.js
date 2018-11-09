@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/comments', commentsController, router)
-app.use('/auth/login', authController);
+app.use('/auth', authController);
 
 
 app.listen(process.env.PORT || 9000, () => {

@@ -44,7 +44,7 @@ onCloseModal = () => {
     render() {
     return (
         <div>
-            <Button outline color="info" size="lg" onClick={this.toggle} block>Camera MAHLI</Button>
+            <Button outline color="info" className="appbutton" size="lg" onClick={this.toggle} block>Camera MAHLI</Button>
                 <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                     <ModalBody>
                         <h1>Photos by Mars Hand Lens Imager</h1>

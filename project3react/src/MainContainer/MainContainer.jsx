@@ -7,6 +7,7 @@ import MahliCamera from './CuriosityCameras/MahliContainer/MahliContainer';
 import MardiCamera from './CuriosityCameras/MardiContainer/MardiContainer';
 import NavCam from './CuriosityCameras/NavContainer/NavContainer'
 import Comments from './CuriosityCameras/CommentContainer/CommentContainer'
+import Login from './LoginContainer/LoginContainer'
 import {Container, Row, Col, Button} from 'reactstrap';
 
 // import CuriosityPhotoList from './CuriosityPhotoList/CuriosityPhotoList';
@@ -61,28 +62,20 @@ class Curiosity extends Component {
                                             <small className="lead">Sol 355</small>
                                     <br/>
                                         <hr className="my-2" />
-                                            <Button outline color="info">Login</Button> 
-                                            <Button outline color="info">Create Account</Button>
+                                            <Login /> &nbsp;
+                                            <Button className="appbutton" outline color="info">Create Account</Button>
                                                 <hr className="my-2"/>
+                                                    <FhazCamera fhazcam={this.state.fhaz} /> 
+                                                    <RhazCamera rhazcamera={this.state.rhaz} />
+                                                    <MastCamera mastcam={this.state.mast}/>
+                                                    <ChemCam chemcam={this.state.chemcam}/>
+                                                    <MahliCamera mahlicam={this.state.mahli} />
+                                                    <MardiCamera mardicam={this.state.mardi} />
+                                                    <NavCam navcam={this.state.nav} />
+                                                        <hr className="my-2"/>
                         </Col>          
                     <Col md="4" id="CameraBlank"/>
                 </Row>
-          <Row>
-                <Col md="4" id="CameraBlank"></Col>
-                <br/>
-                <Col md="4" id="Cameras" className="column2">
-                    <FhazCamera fhazcam={this.state.fhaz} /> 
-                    <RhazCamera rhazcamera={this.state.rhaz} />
-                    <MastCamera mastcam={this.state.mast}/>
-                    <ChemCam chemcam={this.state.chemcam}/>
-                    <MahliCamera mahlicam={this.state.mahli} />
-                    <MardiCamera mardicam={this.state.mardi} />
-                    <NavCam navcam={this.state.nav} />
-                </Col>
-                <br/>
-                <Col md="4" id="CameraBlank"></Col>
-                    <hr className="my-2"/>
-          </Row>
         </Container>
         )
     }

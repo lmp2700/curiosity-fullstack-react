@@ -44,7 +44,7 @@ class FhazCamera extends Component {
     render() {
         return(
             <div>
-                <Button outline color="info" size="lg" onClick={this.toggle} block>Camera FHAZ</Button>
+                <Button outline color="info" className="appbutton" size="lg" onClick={this.toggle} block>Camera FHAZ</Button>
                     <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                         <ModalBody>
                             <h1>Photos by Front Hazard Avoidance Camera</h1>
