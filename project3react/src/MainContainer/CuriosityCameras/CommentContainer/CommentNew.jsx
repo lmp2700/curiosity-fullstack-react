@@ -16,6 +16,9 @@ class newComment extends Component {
         })
         console.log(this.state)
     }
+    componentWillUnmount() {
+        this.isCancelled = true;
+    }
     render() {
         return (
             <Container>
@@ -25,7 +28,7 @@ class newComment extends Component {
                             <Label>Name: <Input type="text" name="username" placeholder="name" onChange={this.onChangeForm}/></Label>  
                         </FormGroup>
                         <FormGroup>
-                            <Label>Comments: <Input type="textarea" name="comment" placeholder="comments" onChange={this.onChangeForm} /></Label>
+                            <Label>Comments: <Input type="textarea" name="comment" placeholder="comments" onChange={this.onChangeForm}/></Label>
                         </FormGroup>
                             <Button outline color="info" type="submit" value="Submit">Submit</Button>
                     </div>

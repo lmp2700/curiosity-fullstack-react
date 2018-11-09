@@ -1,21 +1,22 @@
 import React from 'react'
+import {Button} from 'reactstrap'
 
 const Comments = (props) => {
-    const comment = props.comments.map((comments, i) => {
+    console.log(props.comments)
+    const listedComment = props.comments.map((comment, i) => {
         return (
-            <li key={comments._id}>
-                <h3>{comments.username}</h3>
-                <small>{comments.comment}</small>
-                <button>Edit</button>
-                <button>Delete</button>
-            </li>
+            <div key={comment._id}>
+                <h3>{comment.username}</h3>
+                <small>{comment.comment}</small>
+                <Button onClick={props.editComment.bind(null, comment)}>Edit</Button>
+                <Button onClick={props.deleteComment.bind(null, comment._id)}>Delete</Button>
+            </div>
         )
     })
     return (
         <div>
-            {comment}
+            {listedComment}
         </div>
     )
 }
-
 export default Comments;

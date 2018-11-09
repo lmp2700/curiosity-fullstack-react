@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
 
 const commentSchema = new mongoose.Schema({
-    _id: String, // user
-    comments: String, // user comments
-    photo_id: String // photo ID
+    comment: String, // user comments
+    username: String // photo ID
 })
 
-module.exports = mongoose.model('Photos', commentSchema)
+module.exports = mongoose.model('Comments', commentSchema)

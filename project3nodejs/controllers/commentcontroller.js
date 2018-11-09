@@ -4,13 +4,13 @@ const Comments = require('../models/commentmodel');
 
 // get “/comment” => “controller#index” 
 // # Shows all instances of your model
-router.get('/', async(res, req) => {
+router.get('/', async(req, res) => {
     try {
         const allComments = await Comments.find();
         console.log(allComments)
         res.json({
             status: 200,
-            comment: allComments
+            comments: allComments
           });
             // res.render('/comments/index.ejs', {
             //     comments: allComments
@@ -27,7 +27,7 @@ router.get('/new', async(req, res) => {
         const newComments = await Comments.find();
         res.json({
             status: 200,
-            comment: newComments
+            comments: newComments
           });
             // res.render('/comments/new.ejs', {
             //     comments: newComments
@@ -61,7 +61,7 @@ router.get('/:id', async(req, res) => {
         const showComments = await Comments.findOne(req.params.id, req.body)
         res.json({
             status: 200,
-            comment: showComments
+            comments: showComments
           });
         // res.redirect('/comments')
     } catch(err) {
@@ -77,7 +77,7 @@ router.get('/:id/edit', async(req, res) => {
         const editComment = await Comments.findOne(req.params.id, req.body, {new: true})
         res.json({
             status: 200,
-            comment: editComment
+            comments: editComment
           });
         // res.redirect('/comments')
     } catch(err) {
@@ -92,7 +92,7 @@ router.put('/:id', async(req, res) => {
         const updateComment = await Comments.findOneAndUpdate(req.params.id)
         res.json({
             status: 200,
-            comment: updateComment
+            comments: updateComment
           });
         // res.redirect('/comments')
     } catch(err) {

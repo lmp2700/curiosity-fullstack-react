@@ -6,6 +6,7 @@ import RhazCamera from './CuriosityCameras/RhazContainer/RhazContainer';
 import MahliCamera from './CuriosityCameras/MahliContainer/MahliContainer';
 import MardiCamera from './CuriosityCameras/MardiContainer/MardiContainer';
 import NavCam from './CuriosityCameras/NavContainer/NavContainer'
+import Comments from './CuriosityCameras/CommentContainer/CommentContainer'
 import {Container, Row, Col, Button} from 'reactstrap';
 
 // import CuriosityPhotoList from './CuriosityPhotoList/CuriosityPhotoList';
@@ -49,23 +50,27 @@ class Curiosity extends Component {
     render () {
         const {open} = this.state;
         return (
-            <Container>
+            <Container className="main-container">
                 <Row>
-                    <div>
-                            <h1 className="display-3">Curious || Curiosity Rover Photos App </h1>
-                                <p className="lead">Photos by Curiosity Rover on Sol 355</p>
+                    <Col md="4" id="CameraBlank"/>
+                        <Col md="4" id="Cameras" className="column1">
+                            <h1 className="display-3">Curious</h1>
+                                <hr className="my-2" />
+                                    <h3>Curiosity Rover Photos App</h3>
+                                        <hr className="my-2" />
+                                            <small className="lead">Sol 355</small>
                                     <br/>
-                                <p>
-                                    <Button outline color="info">Login</Button> 
-                                    <Button outline color="info">Create Account</Button>
-                                </p>
-                                    <hr className="my-2" />          
-                    </div>
+                                        <hr className="my-2" />
+                                            <Button outline color="info">Login</Button> 
+                                            <Button outline color="info">Create Account</Button>
+                                                <hr className="my-2"/>
+                        </Col>          
+                    <Col md="4" id="CameraBlank"/>
                 </Row>
           <Row>
                 <Col md="4" id="CameraBlank"></Col>
                 <br/>
-                <Col md="4" id="Cameras">
+                <Col md="4" id="Cameras" className="column2">
                     <FhazCamera fhazcam={this.state.fhaz} /> 
                     <RhazCamera rhazcamera={this.state.rhaz} />
                     <MastCamera mastcam={this.state.mast}/>
@@ -76,6 +81,7 @@ class Curiosity extends Component {
                 </Col>
                 <br/>
                 <Col md="4" id="CameraBlank"></Col>
+                    <hr className="my-2"/>
           </Row>
         </Container>
         )

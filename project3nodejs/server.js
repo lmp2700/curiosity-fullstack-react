@@ -23,6 +23,7 @@ const authController = require('./controllers/authcontroller')
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 const corsOptions = {

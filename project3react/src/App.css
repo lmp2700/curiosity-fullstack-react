@@ -1,11 +1,47 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  background-color: #000000;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-} */
+.App {
+  background-color: #000000;
+  text-align: center;
+  color: #ffffff;
+  /* The image used */
+  background-image: url(../src/images/curiosityselfie.jpg);
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+Button {
+  color: white !important;
+}
+
+.modal {
+  background-color: #000000
+}
+
+.my-2 {
+  color: white;
+}
+
+.column1 {
+  border: #FFFFFF 1px solid;
+  border-bottom-style: none;
+}
+
+.column2 {
+  border: #FFFFFF 1px solid;
+  border-top-style: none;
+}
 
 .App-header {
   background-color: #282c34;
