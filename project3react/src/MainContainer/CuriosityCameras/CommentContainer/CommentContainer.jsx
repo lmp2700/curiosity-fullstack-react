@@ -56,25 +56,28 @@ class Comment extends Component {
         }
     }
     editComment = async (e) => {
-        const editComment = await fetch('http://localhost:9000/comments/' + this.state.comments._id, {
+        
+        const editComment = await fetch('http://localhost:9000/comments/' + e._id, {      
            method: 'PUT',
            body: JSON.stringify({
             username: this.state.username,
-            comments: this.state.comments
+            comment: this.state.comments
         }),
             headers: {
                 'Content-Type': 'application/json'
             }
        });
-       const editCommentParsed = editComment.json();
-       const newCommentArray = this.state.comments.map((comments) => {
-           if(comments._id === editCommentParsed.comments._id) {
-            comments = editCommentParsed.comment
-           }
-           return comments
+       const editCommentParsed = await editComment.json();
+       const newCommentArray = this.state.comments.map((comment, index) => {
+        console.log(comment._id + " | " + index)
+        console.log(editCommentParsed.comments)
+           if(comment._id === editCommentParsed.comments._id) {
+            comment = editCommentParsed.comment
+            }
+           return comment
        })
        this.setState({
-           comments: newCommentArray
+           comment: newCommentArray
        })
     }
     deleteComment = async (id) => {

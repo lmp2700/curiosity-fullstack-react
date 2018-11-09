@@ -8,6 +8,7 @@ const Comments = (props) => {
             <div key={comment._id}>
                 <h3>{comment.username}</h3>
                 <small>{comment.comment}</small>
+                <br/>
                 <Button onClick={props.editComment.bind(null, comment)}>Edit</Button>
                 <Button onClick={props.deleteComment.bind(null, comment._id)}>Delete</Button>
             </div>
