@@ -7,7 +7,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            modal: true
+            modal: false
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -49,13 +49,22 @@ class Login extends Component {
                     <Button outline color="info" className="appbutton" onClick={this.toggle}>Login</Button>
                         <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                                 <ModalBody>
+                                    Login:
                                     <form onSubmit={this.handleLogin}>
                                         <label>Username: <Input type="text" name="username" placeholder="username" onChange={this.handleChange}/></label>
                                         <label>Password: <Input type="password" name="password" placeholder="password" onChange={this.handleChange}/></label>
                                             <Button outline color="info" type="submit" onClick={this.toggle}>Login</Button>
                                     </form>
                                 </ModalBody>
-                                    <Button color="info" onClick={this.toggle}>Close</Button>
+                                <ModalBody>
+                                    Create an Account:
+                                    <form onSubmit={this.handleLogin}>
+                                        <label>Username: <Input type="text" name="username" placeholder="username" onChange={this.handleChange}/></label>
+                                        <label>Password: <Input type="password" name="password" placeholder="password" onChange={this.handleChange}/></label>
+                                        <label>Password: <Input type="password" name="password" placeholder="retype password" onChange={this.handleChange}/></label>
+                                            <Button outline color="info" type="submit" onClick={this.toggle}>Create Account</Button>
+                                    </form>
+                                </ModalBody>
                         </Modal>  
             </div>
         )

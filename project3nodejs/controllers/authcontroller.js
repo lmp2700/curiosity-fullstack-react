@@ -4,9 +4,11 @@ const User = require('../models/usermodel')
 
 router.post('/', async (req, res) => {
     try{
-        const user = await User.create(req.body)
+        const user = await User.findOne({username: req.body.username})
         req.session.logged = true;
-        req.session.username = req.body.username;
+        const validLogin = await bcrypt.compare(req.body.password, user.password);
+        // req.session.username = req.body.username;
+        req.session.userId = user._id
         res.json({
             status: 200,
             data: 'login successful'

@@ -44,7 +44,7 @@ class MardiCamera extends Component {
     render() {
     return(
             <div>
-                <Button outline color="info"className="appbutton" size="lg" onClick={this.onOpenModal} block>Camera MARDI</Button>
+                <Button outline color="info"className="appbutton" size="lg" onClick={this.toggle} block>Camera MARDI</Button>
                     <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                         <ModalBody>
                         <h1>Photos by Mars Descent Imager</h1>

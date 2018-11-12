@@ -54,10 +54,10 @@ class Curiosity extends Component {
             <Container className="main-container">
                 <Row>
                     <Col md="4" id="CameraBlank"/>
-                        <Col md="4" id="Cameras" className="column1">
+                        <Col md="4" id="Cameras" className="column1 rounded">
                             <h1 className="display-3">Curious</h1>
                                 <hr className="my-2" />
-                                    <h3>Curiosity Rover Photos App</h3>
+                                    <h3>A Curiosity Rover Photos App</h3>
                                         <hr className="my-2" />
                                             <small className="lead">Sol 355</small>
                                     <br/>

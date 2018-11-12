@@ -56,7 +56,6 @@ class Comment extends Component {
         }
     }
     editComment = async (e) => {
-        
         const editComment = await fetch('http://localhost:9000/comments/' + e._id, {      
            method: 'PUT',
            body: JSON.stringify({
@@ -92,7 +91,7 @@ render() {
     console.log(this.state)
     return (
             <Container>
-                <h3>Comments:</h3>
+                <h3>Comments:</h3> 
                 <NewComment addComment={this.addComment}/><br/>
                 <hr className="my-2"/>
                 <CommentList deleteComment={this.deleteComment} editComment={this.editComment} comments={this.state.comments}/><br/>

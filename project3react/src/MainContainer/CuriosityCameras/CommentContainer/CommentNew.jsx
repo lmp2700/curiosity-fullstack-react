@@ -6,13 +6,8 @@ class newComment extends Component {
         super();
         this.state = {
             username: '',
-            comment: '',
-            nestedModal: false,
-            closeAll: false
+            comment: ''
         }
-        // this.toggle = this.toggle.bind(this);
-        // this.toggleNested = this.toggleNested.bind(this);
-        // this.toggleAll = this.toggleAll.bind(this);
     }
     toggleNested() {
         this.setState({
