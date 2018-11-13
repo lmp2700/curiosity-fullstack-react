@@ -22,7 +22,7 @@ class Comment extends Component {
     }
     componentDidMount() {
         this.getComments().then((comments) => {
-            this.setState({comments: comments});
+            this.setState({comment: comments});
         }).catch((err) => {
             console.log(err)
         })
@@ -44,7 +44,7 @@ class Comment extends Component {
                 method: 'POST',
                 body: JSON.stringify(newComment),
                 headers: {
-                    'Content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             })
             const parsedResponse = await createdComment.json();
@@ -55,8 +55,8 @@ class Comment extends Component {
             return(err)
         }
     }
-    editComment = async (e) => {
-        const editComment = await fetch('http://localhost:9000/comments/' + e._id, {      
+    editComment = async (comment) => {
+        const editComment = await fetch('http://localhost:9000/comments/' + comment._id, {      
            method: 'PUT',
            body: JSON.stringify({
             username: this.state.username,

@@ -9,19 +9,6 @@ class newComment extends Component {
             comment: ''
         }
     }
-    toggleNested() {
-        this.setState({
-          nestedModal: !this.state.nestedModal,
-          closeAll: false
-        });
-      }
-    
-      toggleAll() {
-        this.setState({
-          nestedModal: !this.state.nestedModal,
-          closeAll: true
-        });
-      }
     onChangeForm = (e) => {
         e.preventDefault();
         this.setState({
