@@ -7,6 +7,7 @@ import MahliCamera from './CuriosityCameras/MahliContainer/MahliContainer';
 import MardiCamera from './CuriosityCameras/MardiContainer/MardiContainer';
 import NavCam from './CuriosityCameras/NavContainer/NavContainer'
 import Comments from './CuriosityCameras/CommentContainer/CommentContainer'
+import CuriositySearch from './CuriosityPhotoList/CuriositySearch/CuriositySearch'
 import Login from './LoginContainer/LoginContainer'
 import {Container, Row, Col, Button} from 'reactstrap';
 
@@ -17,7 +18,16 @@ class Curiosity extends Component {
     constructor() {
         super();
         this.state = {
-            curiosity: [],
+                camera: {
+                    fhaz: [],
+                    rhaz: [],
+                    chemcam: [],
+                    mahli: [],
+                    mardi: [],
+                    mast: [],
+                    nav: [],
+                },
+            sol: [],
             photoToComment: {
                 _id: '',
                 comments: '',
@@ -25,31 +35,37 @@ class Curiosity extends Component {
             },
             open: false
         }
+        this.onSelect = this.onSelect.bind(this)
     }
     getPhotos = async () => {
         try {
-            const curiosity = await fetch('https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity/?api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl');
+            const curiosity = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=' + this.state.sol + '&camera=' + this.state.camera + '&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl');
             const curiosityJson = await curiosity.json();
-            return curiosityJson.photo_manifest.photos
+            return curiosityJson.photos
         } catch(err) {
             return(err)
         }
     } 
-    componentDidMount() {
-        this.getPhotos().then((curiosity) => {
+    // componentDidMount() {
+        
+    // }
+    onOpenModal = () => {
+        this.setState({ open: true });
+      }
+    onCloseModal = () => {
+        this.setState({ open: false });
+      }
+      onSelect = (e) => {
+          e.preventDefault();
+          this.getPhotos().then((curiosity) => {
+              console.log(curiosity, ' this is curious')
             this.setState({curiosity: curiosity});
           }).catch((err) => {
             console.log(err);
           });
-    }
-    onOpenModal = () => {
-        this.setState({ open: true });
-      }; 
-    onCloseModal = () => {
-        this.setState({ open: false });
-      };
+      }
     render () {
-        const {open} = this.state;
+        // const {open} = this.state;
         return (
             <Container className="main-container">
                 <Row>
@@ -59,12 +75,13 @@ class Curiosity extends Component {
                                 <hr className="my-2" />
                                     <h3>A Curiosity Rover Photos App</h3>
                                         <hr className="my-2" />
-                                            <small className="lead">Sol 355</small>
+                                            <small className="lead"><select onChange={this.onSelect}>{this.props.sol}</select></small>
                                     <br/>
                                         <hr className="my-2" />
                                             <Login /> &nbsp;
                                             <Button className="appbutton" outline color="info">Create Account</Button>
                                                 <hr className="my-2"/>
+                                                    <CuriositySearch curiositySearch={this.state.camera.fhaz} />
                                                     <FhazCamera fhazcam={this.state.fhaz} /> 
                                                     <RhazCamera rhazcamera={this.state.rhaz} />
                                                     <MastCamera mastcam={this.state.mast}/>
