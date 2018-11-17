@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import MainContainer from './MainContainer/MainContainer'
 import LoginContainer from './MainContainer/LoginContainer/LoginContainer'
-import CommentContainer from './MainContainer/CuriosityCameras/CommentContainer/CommentContainer'
+import CommentContainer from './MainContainer/CuriosityPhotoList/CommentContainer/CommentContainer'
 
 
 const My404 = () => {

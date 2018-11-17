@@ -8,8 +8,8 @@ class CuriositySearch extends Component {
         super();
         this.state = {
             camera: [],
+            sol: [],
             open: false,
-            modal: false
         }
         this.onSelect = this.onSelect.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -24,28 +24,38 @@ class CuriositySearch extends Component {
             return(err)
         }
     } 
-    componentDidMount(e) {
-        e.preventDefault();
+    componentDidMount() {
         this.getPhotos().then((curiosity) => {
             console.log(curiosity, ' this is curious')
-          this.setState({curiosity: curiosity});
+          this.setState({camera: curiosity});
         }).catch((err) => {
           console.log(err);
         });
     }
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
     onOpenModal = () => {
         this.setState({ open: true });
       }
     onCloseModal = () => {
         this.setState({ open: false });
       }
+      onSelect = (e) => {
+        e.preventDefault();
+        this.setState({
+            [e.currentTarget.name]: e.currentTarget.value
+        })
+    }
     render(){
         return(
             <div>
-                <Button outline color="info" size="lg" className="appbutton" onClick={this.toggle} block>{this.props.camera}</Button>
+                <Button outline color="info" size="lg" className="appbutton" onClick={this.toggle} block>{this.state.camera}</Button>
                     <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                         <ModalBody>
-                            <h1>Photos by {this.props.camera}</h1>
+                            <h1>Photos by {this.state.camera}</h1>
                             <CuriosityPhotoList curiositySearch={this.state.camera} />
                         </ModalBody>
                         <ModalFooter>

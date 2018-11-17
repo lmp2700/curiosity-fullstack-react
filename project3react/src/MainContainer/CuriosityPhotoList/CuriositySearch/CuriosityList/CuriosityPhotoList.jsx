@@ -24,7 +24,7 @@ class CuriositySearch extends Component {
     }
 }
 
-console.log(curiositySearch, ' these are search results')
+// console.log(curiosityResults, ' these are search results')
 console.log('curiosity search last')
 
 export default CuriositySearch;
