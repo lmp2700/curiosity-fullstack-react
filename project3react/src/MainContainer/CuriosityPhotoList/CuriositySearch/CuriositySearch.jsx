@@ -8,6 +8,7 @@ class CuriositySearch extends Component {
         super();
         this.state = {
             camera: [],
+            fhaz: [],
             sol: [],
             open: false,
         }
@@ -18,7 +19,7 @@ class CuriositySearch extends Component {
         try {
             const curiosity = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=' + this.props.sol + '&camera=' + this.props.camera + '&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl');
             const curiosityJson = await curiosity.json();
-            console.log(curiosityJson.photos)
+            console.log(curiosityJson.photos, ' json photos')
             return curiosityJson.photos
         } catch(err) {
             return(err)
@@ -52,10 +53,10 @@ class CuriositySearch extends Component {
     render(){
         return(
             <div>
-                <Button outline color="info" size="lg" className="appbutton" onClick={this.toggle} block>{this.state.camera}</Button>
+                <Button outline color="info" size="lg" className="appbutton" onClick={this.toggle} block>{this.state.camera.name}</Button>
                     <Modal isOpen={this.state.modal} onClose={this.toggle} center="true">
                         <ModalBody>
-                            <h1>Photos by {this.state.camera}</h1>
+                            <h1>Photos by {this.state.camera.full_name}</h1>
                             <CuriosityPhotoList curiositySearch={this.state.camera} />
                         </ModalBody>
                         <ModalFooter>

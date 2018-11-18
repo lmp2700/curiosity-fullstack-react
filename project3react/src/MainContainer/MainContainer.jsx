@@ -48,7 +48,7 @@ class Curiosity extends Component {
                                 <hr className="my-2" />
                                     <h3>A Curiosity Rover Photos App</h3>
                                         <hr className="my-2" />
-                                            <small className="lead">Sol: <select onChange={this.onSelect}>{this.state.sol}</select></small>
+                                            <small className="lead">Sol: <select onChange={this.onSelect}><option value={this.state.sol}>{this.state.sol}</option></select></small>
                                                 <br/>
                                                     <hr className="my-2" /> 
                                             <Login /> &nbsp;
@@ -65,7 +65,7 @@ class Curiosity extends Component {
                         </Col>          
                     <Col md="4" id="CameraBlank"/>
                 </Row>
-        </Container>
+            </Container>
         )
     }
 }

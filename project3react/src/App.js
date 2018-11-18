@@ -9,7 +9,7 @@ import CommentContainer from './MainContainer/CuriosityPhotoList/CommentContaine
 const My404 = () => {
   return (
     <div>
-      Curiosity isn't here
+      <h2>Curiosity isn't here</h2>
     </div>
     )
 };
