@@ -48,19 +48,19 @@ class Curiosity extends Component {
                                 <hr className="my-2" />
                                     <h3>A Curiosity Rover Photos App</h3>
                                         <hr className="my-2" />
-                                            <small className="lead">Sol: <select onChange={this.onSelect}><option value={this.state.sol}>{this.state.sol}</option></select></small>
+                                            <small className="lead">Sol: <select onChange={this.onSelect}><option>{this.state.sol}</option></select></small>
                                                 <br/>
                                                     <hr className="my-2" /> 
                                             <Login /> &nbsp;
                                             <Button className="appbutton" outline color="info">Create Account</Button>
                                                 <hr className="my-2"/>
-                                                    <CuriositySearch curiositySearch="fhaz" />
-                                                    <CuriositySearch curiositySearch="rhaz" />
-                                                    <CuriositySearch curiositySearch="chemcam" />
-                                                    <CuriositySearch curiositySearch="mahli" />
-                                                    <CuriositySearch curiositySearch="mardi" />
-                                                    <CuriositySearch curiositySearch="mast" />
-                                                    <CuriositySearch curiositySearch="nav" />
+                                                    <CuriositySearch camera="fhaz" />
+                                                    <CuriositySearch camera="rhaz" />
+                                                    <CuriositySearch camera="chemcam" />
+                                                    <CuriositySearch camera="mahli" />
+                                                    <CuriositySearch camera="mardi" />
+                                                    <CuriositySearch camera="mast" />
+                                                    <CuriositySearch camera="nav" />
                                                 <hr className="my-2"/>
                         </Col>          
                     <Col md="4" id="CameraBlank"/>
