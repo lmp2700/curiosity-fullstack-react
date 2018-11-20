@@ -54,13 +54,13 @@ class Curiosity extends Component {
                                             <Login /> &nbsp;
                                             <Button className="appbutton" outline color="info">Create Account</Button>
                                                 <hr className="my-2"/>
-                                                    <CuriositySearch camera="fhaz" />
-                                                    <CuriositySearch camera="rhaz" />
-                                                    <CuriositySearch camera="chemcam" />
-                                                    <CuriositySearch camera="mahli" />
-                                                    <CuriositySearch camera="mardi" />
-                                                    <CuriositySearch camera="mast" />
-                                                    <CuriositySearch camera="nav" />
+                                                    <CuriositySearch camera="FHAZ" />
+                                                    <CuriositySearch camera="RHAZ" />
+                                                    <CuriositySearch camera="CHEMCAM" />
+                                                    <CuriositySearch camera="MAHLI" />
+                                                    <CuriositySearch camera="MARDI" />
+                                                    <CuriositySearch camera="MAST" />
+                                                    <CuriositySearch camera="NAV" />
                                                 <hr className="my-2"/>
                         </Col>          
                     <Col md="4" id="CameraBlank"/>
