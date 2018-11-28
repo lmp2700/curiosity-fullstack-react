@@ -16,7 +16,7 @@ class CuriositySearch extends Component {
     }
     getPhotos = async () => {
         try {
-            const curiosity = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=37&camera=' + this.props.camera + '&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl');
+            const curiosity = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=python37&camera=' + this.props.camera + '&api_key=0mSs2fdXEJMSAuLVHdcfLB0w9KGBddgBzNyFUEYl');
             const curiosityJson = await curiosity.json();
             return curiosityJson.photos
         } catch(err) {
