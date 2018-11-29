@@ -8,7 +8,9 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const session = require('express-session')
 const path = require('path');
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost/curiosity"
 require('dotenv').config();
+
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -51,7 +53,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
-port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('listening on port 3000');
 });
