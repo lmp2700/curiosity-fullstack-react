@@ -1,43 +1,24 @@
 {
-  "name": "project3react",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "babel-eslint": "^9.0.0",
-    "bootstrap": "^4.1.3",
-    "prop-types": "^15.6.2",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-markdown": "^4.0.3",
-    "react-responsive-modal": "^3.5.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "reactstrap": "^6.5.0",
-    "superagent": "^4.0.0-beta.5",
-    "whatwg-fetch": "^3.0.0",
-    "yarn": "^1.12.3"
-  },
+  "name": "project3nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start --cd backend && nodemon server.js --exec babel-node --presets es2015,stage-0",
-    "start:client": "cd client && yarn start",
-    "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {},
   "author": "",
   "license": "ISC",
-  "proxy": "http://localhost:3000"
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "express-sessions": "^1.0.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.3.10",
+    "morgan": "^1.9.1"
+  }
 }
