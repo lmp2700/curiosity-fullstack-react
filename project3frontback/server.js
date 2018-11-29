@@ -14,7 +14,6 @@ require('dotenv').config();
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // models here
-
 require('./db/db')
 app.use(session({
   secret: process.env.SESSION_SECRET,
