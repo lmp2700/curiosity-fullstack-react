@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const session = require('express-session')
 const path = require('path');
-const mongoUri = process.env.MONGODB_URI || "mongodb://localhost/curiosity"
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:3000/curiosity"
 require('dotenv').config();
 
 
@@ -49,11 +49,11 @@ app.use('/api/vi/comments', commentsController, router)
 app.use('/api/vi/auth', authController);
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/client/build/index.html'));
+// });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9000;
 app.listen(port, () => {
-  console.log('listening on port 3000');
+  console.log('listening on port 9000');
 });

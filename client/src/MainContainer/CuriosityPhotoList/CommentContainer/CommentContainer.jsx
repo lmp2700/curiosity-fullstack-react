@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NewComment from './CommentNew'
 import CommentList from './CommentList'
-import EditComment from './CommentEdit'
+// import EditComment from './CommentEdit'
 import 'whatwg-fetch';
 import { Container } from 'reactstrap';
 

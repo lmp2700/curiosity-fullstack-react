@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import CuriositySearch from './CuriosityPhotoList/CuriositySearch/CuriositySearch'
 import Login from './LoginContainer/LoginContainer'
-import {Container, Row, Col, Button} from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 class Curiosity extends Component {
     constructor() {
@@ -37,33 +37,38 @@ class Curiosity extends Component {
             [e.currentTarget.name]: e.currentTarget.value
         })
     }
-    render () {
-        console.log(this.state.sol, ' this is sol')
+    render() {
+        const sol = []
+        for (let i = 1; i < 10; i++) {
+            console.log(sol[i]) // comes back undefined but need this to bring back sol dates
+            // console.log(this.state.sol, ' state sol') // comes back as an empty array
+            // console.log(this.props.sol, ' props sol') // undefined
+            // console.log(this.state.sol, ' this is sol')
+        }
         return (
             <Container className="main-container">
                 <Row>
-                    <Col md="4" id="CameraBlank"/>
-                        <Col md="4" id="Cameras" className="column1 rounded">
-                            <h1 className="display-3">Curious</h1>
-                                <hr className="my-2" />
-                                    <h3>A Curiosity Rover Photos App</h3>
-                                        <hr className="my-2" />
-                                            <small className="lead">Sol: <select onChange={this.onSelect}><option>{this.state.sol}</option></select></small>
-                                                <br/>
-                                                    <hr className="my-2" /> 
-                                            <Login /> &nbsp;
-                                            <Button className="appbutton" outline color="info">Create Account</Button>
-                                                <hr className="my-2"/>
-                                                    <CuriositySearch camera="FHAZ" />
-                                                    <CuriositySearch camera="RHAZ" />
-                                                    <CuriositySearch camera="CHEMCAM" />
-                                                    <CuriositySearch camera="MAHLI" />
-                                                    <CuriositySearch camera="MARDI" />
-                                                    <CuriositySearch camera="MAST" />
-                                                    <CuriositySearch camera="NAV" />
-                                                <hr className="my-2"/>
-                        </Col>          
-                    <Col md="4" id="CameraBlank"/>
+                    <Col md="4" id="CameraBlank" />
+                    <Col md="4" id="Cameras" className="column1 rounded">
+                        <h1 className="display-3">Curious</h1>
+                        <hr className="my-2" />
+                        <h3>A Curiosity Rover Photos App</h3>
+                        <hr className="my-2" />
+                        <small className="lead">Sol: <select onChange={this.onSelect}><option>{this.state.sol}</option></select></small>
+                        <br />
+                        <hr className="my-2" />
+                        <Login />
+                        <hr className="my-2" />
+                        <CuriositySearch camera="FHAZ" />
+                        <CuriositySearch camera="RHAZ" />
+                        <CuriositySearch camera="CHEMCAM" />
+                        <CuriositySearch camera="MAHLI" />
+                        <CuriositySearch camera="MARDI" />
+                        <CuriositySearch camera="MAST" />
+                        <CuriositySearch camera="NAV" />
+                        <hr className="my-2" />
+                    </Col>
+                    <Col md="4" id="CameraBlank" />
                 </Row>
             </Container>
         )
